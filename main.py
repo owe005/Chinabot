@@ -1,12 +1,14 @@
 import discord
 import os
-from datetime import datetime
 import pytz
 import random
 import emoji
+import string
 from googletrans import Translator
 from discord.ext import commands, tasks
 from itertools import cycle
+from datetime import datetime
+from random import choice
 
 client = discord.Client()
 
@@ -27,9 +29,66 @@ async def on_message(message):
   if message.author == client.user:
     return
 
+  if message.author.bot == True:
+    return
+
+  if message.content.lower().startswith(""):
+    channelCheck = str(message.channel.id)
+    if channelCheck == "745725475157967000":
+        return
+
+    channel = str(message.channel)
+    if channel == "chinese-translation":
+      with open("socialCredit.txt","r") as check:
+        data3 = check.readlines()
+        creditCount2 = int(data3[0])
+
+        if creditCount2<0:
+            await message.channel.send("Not enough social credit to ask for a translation")
+
+        if creditCount2>=0:
+            translator = Translator()
+            input_text = str(message.content)
+            results = translator.translate(input_text, dest='zh-cn')
+            creditCount2 += -100
+            data3[0] = str(creditCount2)
+
+            with open("socialCredit.txt","w") as change:
+                change.writelines(data3)
+                change.close()
+
+            finalized = ("This translation costed the server 100 social credits, server now has " + str(creditCount2) + " credits. \nYour message was translated into:\n" + results.text)
+
+            await message.channel.send(finalized)
+
+    TheUser = str(message.author)
+    if TheUser == "Magvy#0852":
+        await message.add_reaction("🇨🇳")
+
+    with open("socialCredit.txt","r") as check2:
+        data4 = check2.readlines()
+        socialCreditCount = int(data4[0])
+        if socialCreditCount < 0:
+            percentageBase = 0.10
+            if random.random() < percentageBase:
+                questionBank = ["China is the best country in the world, you will learn this soon", "This server has negative social credit and the Chinese government are getting impatient", "We see everything you do and say", "We know everything about you", "Have you learnt about Chinese culture today? We hope you have", "China > Every other country", "Nothing ever happened in Tiananmen Square"]
+                pickRandomQuestion = random.choice(questionBank)
+                await message.author.send(pickRandomQuestion)
+
+  if message.content.startswith('c.cities'):
+      cities = ["beijing.jpeg", "shanghai.jpg", "idk.jpg", "idk2.jpg"]
+      pickRandomCity = random.choice(cities)
+      await message.channel.send(file=discord.File(pickRandomCity))
+
+  if message.content.startswith('c.lightshot'):
+      randomurlString = string.ascii_lowercase + string.digits
+      randomizing = ''.join(random.choice(randomurlString) for i in range(6))
+      url = "https://prnt.sc/" + str(randomizing)
+      await message.channel.send(url)
+
   if message.content.startswith('c.about'):
-        embedVar = discord.Embed(title="Who am I?", description="I am a representative of the People's Republic of China acting on the interests of the greatest country on Earth.", color=0xff0000)
-        embedVar.add_field(name="Available Commands", value = "These are the available commands that the People's Republic of China has allowed me to reveal: \n \n translations in #chinese-translation \n c.about \n c.socialcredits \n c.chinatime \n c.hongkongtime \n c.realfact \n c.funfact \n \n", inline=False)
+        embedVar = discord.Embed(title="Who am I?", description="I am a representative of the People's Republic of China acting on the interests of the greatest country on Earth. I am here to make sure the server keeps it's social credit positive.\n\nIf not I will start taking action against people.", color=0xff0000)
+        embedVar.add_field(name="Available Commands", value = "These are the available commands that the People's Republic of China has allowed me to reveal: \n \n translations in #chinese-translation \n\nPrefix = c.\n e.g: c.about \n\n about \n cities \n flipcoin \n socialcredits \n lightshot \n chinatime \n hongkongtime \n realfact \n funfact \n \n", inline=False)
         embedVar.set_footer(text="All non-citizens of China are subject to voluntarily labour within our labour-camps within due date. \n \nAuthor: Ole Westby")
         embedVar.set_thumbnail(url="https://cdn.pixabay.com/photo/2020/04/04/11/45/flag-5001937_960_720.jpg")
         await message.channel.send(embed=embedVar)
@@ -62,6 +121,21 @@ async def on_message(message):
 
   if 'based on what' in message.content:
     await message.channel.send("your mom")
+
+  if message.content.startswith("c.flipcoin"):
+    deter = [1, 0]
+
+
+    if random.choice(deter) == 1:
+        embedVar2 = discord.Embed(title="Heads!", description="You rolled heads bro", color=0xff0000)
+        embedVar2.set_thumbnail(url="https://www.pngkey.com/png/full/146-1464786_400px-circle-quarter-heads-side-of-coin.png")
+        await message.channel.send(embed=embedVar2)
+    else:
+        embedVar3 = discord.Embed(title="Tails!", description="You rolled tails bro", color=0xff0000)
+        embedVar3.set_thumbnail(url="https://www.nicepng.com/png/full/146-1464848_quarter-tail-png-tails-on-a-coin.png")
+        await message.channel.send(embed=embedVar3)
+
+
 
   if 'your mom' in message.content:
     await message.channel.send("你会死")
@@ -115,7 +189,7 @@ async def on_message(message):
       await message.channel.send(response2)
       await member.edit(nick=random.choice(keywords))
 
-    if any(word in message.content.lower() for word in converted_list_2):
+    elif any(word in message.content.lower() for word in converted_list_2):
       with open("positiveCount.txt","r") as po:
         data = po.readlines()
         count = int(data[0])
@@ -153,39 +227,5 @@ async def on_message(message):
 
       else:
         await message.channel.send("I heard someone talk about China, but was not able to detect anything negative.")
-
-
-  if message.content.lower().startswith(""):
-    channel = str(message.channel)
-    if channel == "chinese-translation":
-
-      with open("socialCredit.txt","r") as check:
-        data3 = check.readlines()
-        creditCount2 = int(data3[0])
-
-        if creditCount2<0:
-            await message.channel.send("Not enough social credit to ask for a translation")
-
-        if creditCount2>=0:
-            translator = Translator()
-            input_text = str(message.content)
-            results = translator.translate(input_text, dest='zh-cn')
-            creditCount2 += -100
-            data3[0] = str(creditCount2)
-
-            with open("socialCredit.txt","w") as change:
-                change.writelines(data3)
-                change.close()
-
-            finalized = ("This translation costed the server 100 social credits, server now has " + str(creditCount2) + " credits. \nYour message was translated into:\n" + results.text)
-
-            await message.channel.send(finalized)
-
-
-
-
-
-
-
 
 client.run('NzQ4NTQ1MTI0NjYwNjc0Njky.X0e--Q.R5FW7K2mqnGZQ9zY1SJOxtYIuZw')
