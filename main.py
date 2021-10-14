@@ -228,4 +228,4 @@ async def on_message(message):
       else:
         await message.channel.send("I heard someone talk about China, but was not able to detect anything negative.")
 
-client.run('NzQ4NTQ1MTI0NjYwNjc0Njky.X0e--Q.R5FW7K2mqnGZQ9zY1SJOxtYIuZw')
+client.run('TOKEN')
