@@ -1,4 +1,17 @@
-from library import *
+import discord #discord
+#import os
+import pytz #chinatime
+import random
+import string
+#import glob
+import requests, json
+#import matplotlib.pyplot as plt
+import time
+from googletrans import Translator
+from discord.ext import commands, tasks
+from itertools import cycle
+from datetime import datetime #chinatime
+from random import choice
 
 client = discord.Client()
 status = cycle(["Surveillance Simulator", "Assassinating Defectors 2", "Hearts of Iron IV as Xi Jinping"])
