@@ -3,4 +3,11 @@ Author: owe005
 A satirical parody of the Chinese government
 
 
-Code is a social experiment and is thus badly written :)
+Features:
+
+- Lightshot link generation.
+- Translations to Chinese, English and Norwegian.
+- Weather reports with temperature.
+- Very bad matplot function outputs (commented out, need to add a folder to store figures.. have fun.).
+- Flip a coin.
+- Report back on the current time in Shanghai, China.
