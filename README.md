@@ -17,7 +17,7 @@ Features:
 To use this bot:
 
 1. Download main.py
-2. Open somewhere you can the code.
+2. Open somewhere you can edit the code.
 3. Create a new variable "TOKEN" to hold your discord bot token, or just replace "TOKEN" in client.run() with your token.
 4. Replace stuff that doesn't apply to your server, like the channel names or users.
 5. ???
