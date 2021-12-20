@@ -22,3 +22,6 @@ To use this bot:
 4. Replace stuff that doesn't apply to your server, like the channel names or users.
 5. ???
 6. profit
+
+
+ps: In one of the commits you may find a token for the bot I am using. This token is dead :)
