@@ -19,7 +19,7 @@ async def _help(ctx):
   embed.set_author(name="Github", url="https://github.com/owe005/Chinabot", icon_url="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png")
   embed.add_field(name="/chinatime", value="The reason why this bot was created in the first place. This command will return the current time in mainland China.", inline=False)
   embed.add_field(name="/flipacoin", value="This command will simply flip a coin for you and display it in an embedded message for you to view.", inline=False)
-  embed.add_field(name="/lightshot, /lightshotx10", value="Will generate a random URL from prnt.sc/ for you to view. There is a chance that the image might be deleted, if that is the case, just try again! For the x10 version, it returns 10 generated image links.", inline=False)
+  embed.add_field(name="/lightshot", value="Will generate a random URL from prnt.sc/ for you to view. There is a chance that the image might be deleted, if that is the case, just try again! For the x10 version, it returns 10 generated image links.", inline=False)
   embed.add_field(name="/ssl", value="This is game of Stein Saks Laks! The rules of this game are:\nStein beats Saks and Laks.\nSaks beats Laks but loses to Stein.\nLaks loses to Stein and Laks.\nIf both pick the same, it's a tie.\nWill you risk playing Saks?", inline=False)
   embed.set_footer(text="This bot is a satirical parody of the Chinese government - don't take it seriously.")
 
