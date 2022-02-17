@@ -17,7 +17,7 @@ _/ssl_
 This is game of Stein Saks Laks! The rules of this game are:\nStein beats Saks and Laks. Saks beats Laks but loses to Stein. Laks loses to Stein and Laks. If both pick the same, it's a tie. Will you risk playing Saks?
 
 _/plot {function}_
-The plot command is probably the most useful command added to this god forsaken bot. To put it simply, run /plot followed by the function you wish to plot. For example: /plot x^3+sin(2*x)-(5/x)+ln(x) That's it! It is important to separate x variables with a * or else it will not run. E.g 2*x and not 2x.
+The plot command is probably the most useful command added to this god forsaken bot. To put it simply, run /plot followed by the function you wish to plot. For example: /plot x^3 That's it! It is important to separate x variables with a * or else it will not run. E.g 2*x and not 2x.
 
 _/reddit {subreddit}_ 
 This command will return a random image from a subreddit of your choosing.
