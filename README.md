@@ -4,7 +4,7 @@ A satirical parody of the Chinese government
 
 **Chinese Embassy -  Documentation**
 
-Check library.py for what libraries is needed to run the bot. This is not meant for someone to just pick up and use for their server. This is merely a way for me to keep track of what updates I roll out for the bot.
+**Check library.py for what libraries is needed to run the bot. This is not meant for someone to just pick up and use for their server. This is merely a way for me to keep track of what updates I roll out for the bot.**
 
 _/chinatime_
 The reason why this bot was created in the first place. This command will return the current time in mainland China.
